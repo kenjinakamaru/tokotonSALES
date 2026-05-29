@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トコトン営業支援ガイド｜外部委託スタッフ向け</title>
+<style>
+  :root {
+    --primary: #2563eb;
+    --primary-light: #dbeafe;
+    --primary-dark: #1e40af;
+    --accent: #059669;
+    --accent-light: #d1fae5;
+    --warn: #d97706;
+    --warn-light: #fef3c7;
+    --danger: #dc2626;
+    --danger-light: #fee2e2;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-600: #4b5563;
+    --gray-800: #1f2937;
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-800);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: var(--shadow);
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: var(--white);
+    padding: 40px 30px;
+    text-align: center;
+  }
+
+  .header h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 800;
+  }
+
+  .header-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+  }
+
+  .exec-summary {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    backdrop-filter: blur(4px);
+  }
+
+  .exec-summary h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .exec-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
+
+  .exec-point {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .exec-point strong {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  /* Sections */
+  .section {
+    padding: 40px 30px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .section-header {
+    margin-bottom: 25px;
+  }
+
+  .section-label {
+    display: inline-block;
+    background: var(--primary-light);
+    color: var(--primary-dark);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+  }
+
+  .section-desc {
+    color: var(--gray-600);
+    font-size: 14px;
+  }
+
+  /* Market Context */
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-bottom: 25px;
+  }
+
+  .market-card {
+    border-radius: 12px;
+    padding: 20px;
+    background: var(--danger-light);
+    border: 2px solid #fca5a5;
+    text-align: center;
+  }
+
+  .market-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--danger);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .market-icon {
+    font-size: 20px;
+  }
+
+  .market-text {
+    font-size: 14px;
+    color: var(--gray-800);
+    line-height: 1.6;
+  }
+
+  .spiral-indicator {
+    background: var(--gray-800);
+    color: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+  /* Company Strength */
+  .strength-highlight {
+    background: linear-gradient(135deg, #f0fdf4, #d1fae5);
+    border: 2px solid #86efac;
+    border-radius: 16px;
+    padding: 30px;
+    margin-top: 25px;
+    position: relative;
+  }
+
+  .strength-badge {
+    background: var(--accent);
+    color: var(--white);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 15px;
+  }
+
+  .strength-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: #065f46;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .strength-content {
+    font-size: 14px;
+    color: var(--gray-800);
+    line-height: 1.7;
+  }
+
+  /* Before/After */
+  .ba-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .ba-card {
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+
+  .ba-before {
+    background: #fef2f2;
+    border-color: #fca5a5;
+  }
+
+  .ba-after {
+    background: #f0fdf4;
+    border-color: #86efac;
+  }
+
+  .ba-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ba-before .ba-title { color: var(--danger); }
+  .ba-after .ba-title { color: var(--accent); }
+
+  .ba-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .ba-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .ba-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ba-before .ba-icon {
+    background: var(--danger-light);
+    color: var(--danger);
+  }
+
+  .ba-after .ba-icon {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .ba-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--primary);
+    font-size: 24px;
+  }
+
+  .ba-arrow-text {
+    font-size: 10px;
+    font-weight: 700;
+    margin-top: 4px;
+    letter-spacing: 1px;
+  }
+
+  /* Quantitative Effects */
+  .metrics-intro {
+    background: var(--primary-light);
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary);
+  }
+
+  .metrics-intro-text {
+    font-size: 13px;
+    color: var(--primary-dark);
+    font-weight: 600;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .metric-card {
+    border: 1px solid var(--gray-200);
+    border-top: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 20px;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .metric-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .metric-icon {
+    font-size: 24px;
+  }
+
+  .metric-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--primary-dark);
+  }
+
+  .metric-impact {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .metric-description {
+    font-size: 14px;
+    color: var(--gray-800);
+    line-height: 1.6;
+  }
+
+  /* Customer Types */
+  .customer-types {
+    display: grid;
+    gap: 20px;
+  }
+
+  .customer-type {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .ct-header {
+    padding: 20px 25px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .ct-type-a { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); }
+  .ct-type-b { background: linear-gradient(135deg, #065f46, var(--accent)); }
+  .ct-type-c { background: linear-gradient(135deg, #92400e, var(--warn)); }
+
+  .ct-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .ct-info h3 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .ct-info p {
+    font-size: 13px;
+    opacity: 0.9;
+  }
+
+  .ct-body {
+    background: var(--white);
+    padding: 0;
+  }
+
+  .ct-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .ct-row:last-child { border-bottom: none; }
+
+  .ct-label {
+    background: var(--gray-50);
+    padding: 16px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray-600);
+    border-right: 1px solid var(--gray-200);
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .ct-content {
+    padding: 16px 20px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    margin: 2px 4px 2px 0;
+  }
+
+  .tag-blue { background: var(--primary-light); color: var(--primary-dark); }
+  .tag-green { background: var(--accent-light); color: #065f46; }
+  .tag-red { background: var(--danger-light); color: var(--danger); }
+
+  .quote-box {
+    background: #eff6ff;
+    border-left: 4px solid var(--primary);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    margin-top: 8px;
+    color: var(--primary-dark);
+    font-style: italic;
+  }
+
+  /* Hearing Points */
+  .hearing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .hearing-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .hearing-header {
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hh-primary { background: var(--primary-light); color: var(--primary-dark); }
+  .hh-accent { background: var(--accent-light); color: #065f46; }
+  .hh-warn { background: var(--warn-light); color: #92400e; }
+
+  .hearing-body {
+    padding: 20px;
+    background: var(--white);
+  }
+
+  .question-item {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .question-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .question {
+    font-weight: 700;
+    color: var(--gray-800);
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+
+  .question-note {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  /* Segments */
+  .segment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .segment-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 20px;
+    background: var(--white);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .segment-role {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--gray-200);
+    color: var(--primary);
+  }
+
+  .segment-content {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .segment-content strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--gray-800);
+  }
+
+  /* FAQ */
+  .faq-item {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .faq-question {
+    background: var(--warn-light);
+    padding: 18px 20px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #92400e;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .faq-q-icon {
+    background: var(--warn);
+    color: var(--white);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .faq-answer {
+    background: var(--white);
+    padding: 18px 20px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--gray-800);
+  }
+
+  .answer-label {
+    display: inline-block;
+    background: var(--accent-light);
+    color: #065f46;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container { margin: 10px; }
+    .header { padding: 30px 20px; }
+    .section { padding: 30px 20px; }
+    .section-title { font-size: 20px; }
+    
+    .ba-container {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    
+    .ba-arrow {
+      flex-direction: row;
+      font-size: 20px;
+    }
+    
+    .ct-row {
+      grid-template-columns: 1fr;
+    }
+    
+    .ct-label {
+      border-right: none;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    
+    .exec-points {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Icons using CSS */
+  .icon-phone::before { content: "📞"; }
+  .icon-user::before { content: "👤"; }
+  .icon-robot::before { content: "🤖"; }
+  .icon-x::before { content: "❌"; }
+  .icon-check::before { content: "✅"; }
+  .icon-arrow::before { content: "➡️"; }
+  .icon-trend::before { content: "📈"; }
+  .icon-ai::before { content: "🤖"; }
+  .icon-competition::before { content: "⚡"; }
+  .icon-internal::before { content: "🏢"; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Header -->
+  <header class="header">
+    <h1>トコトン営業支援ガイド</h1>
+    <p class="header-subtitle">外部委託営業・アポインター向け理解資料</p>
+    
+    <div class="exec-summary">
+      <h3>📋 エグゼクティブサマリー</h3>
+      <div class="exec-points">
+        <div class="exec-point">
+          <strong>1. 制作会社の「今」を理解する</strong>
+          内製化・AI・低単価競合の圧力で、従来の「依頼待ち」運用では厳しい時代。まずこの共通認識から始めます。
+        </div>
+        <div class="exec-point">
+          <strong>2. 制作会社が作った制作会社のための仕組み</strong>
+          トコトンは開発元自身が制作会社として体験した課題を解決するために生まれたサービス。だから現場にフィットします。
+        </div>
+        <div class="exec-point">
+          <strong>3. 定量的な成果につながる仕組み</strong>
+          「楽になる」だけでなく、請求漏れ回収・工数可視化・提案機会創出により、具体的な収益インパクトを生み出します。
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 0: Market Context -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">市況理解</div>
+      <h2 class="section-title">制作会社を取り巻く3つの圧力</h2>
+      <p class="section-desc">なぜ今、保守・運用の仕組み化が急務なのか？業界の構造変化を理解する</p>
+    </div>
+
+    <div class="market-grid">
+      <div class="market-card">
+        <div class="market-title">
+          <span class="market-icon icon-internal"></span>
+          内製化の加速
+        </div>
+        <div class="market-text">
+          CMSやノーコードツールの進化により、簡単な更新は社内で対応するクライアントが増加。制作会社には「より高度な相談」「迅速な提案」が求められています。
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-title">
+          <span class="market-icon icon-ai"></span>
+          AI・自動化の台頭
+        </div>
+        <div class="market-text">
+          生成AIや自動化ツールにより、単純作業の価値が相対的に低下。「言われた通りの作業」だけでは差別化が困難になっています。
+        </div>
+      </div>
+
+      <div class="market-card">
+        <div class="market-title">
+          <span class="market-icon icon-competition"></span>
+          低単価競合の参入
+        </div>
+        <div class="market-text">
+          海外リソースや低価格サービスの台頭で、作業代行の価格競争が激化。付加価値のない業務は価格で比較されてしまいます。
+        </div>
+      </div>
+    </div>
+
+    <div class="spiral-indicator">
+      ⚠️ これらの圧力により「忙しいのに利益が残らない負のスパイラル」に陥る制作会社が急増
+    </div>
+
+    <!-- A社の強み -->
+    <div class="strength-highlight">
+      <div class="strength-badge">🏆 トコトンの独自性</div>
+      <div class="strength-title">
+        <span>🤝</span>
+        制作会社である開発元が「自らの痛み」を解決するために作ったツール
+      </div>
+      <div class="strength-content">
+        <strong>フォノグラム社自身がWeb制作会社として、同じ課題を体験してきました。</strong><br><br>
+        「依頼が散在して履歴が追えない」「月末の請求作業で漏れが発生」「細かい作業が隠れ仕事になる」—— これらの制作会社特有の痛みを、開発元が実際に経験し、自社の運用改善のために開発されたのがトコトンです。<br><br>
+        だからこそ、現場の感覚を理解した「運用しやすい」仕組みであり、経営に「成果をもたらす」実践的なツールとして設計されています。<strong>これが他の汎用ツールとの決定的な違いです。</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: World View -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">SECTION 1</div>
+      <h2 class="section-title">トコトンが解決する世界観</h2>
+      <p class="section-desc">顧客の「現在の状態」から「なりたい姿」への変化を明確に示す</p>
+    </div>
+
+    <div class="ba-container">
+      <div class="ba-card ba-before">
+        <div class="ba-title">
+          <span class="icon-x"></span>
+          Before｜受け身の保守運用
+        </div>
+        <ul class="ba-list">
+          <li>
+            <span class="ba-icon">✗</span>
+            <span>依頼がSlack・メール・電話・口頭に散在し、履歴が追えない</span>
+          </li>
+          <li>
+            <span class="ba-icon">✗</span>
+            <span>「誰が・どのクライアントに・どれだけ時間を使ったか」が分からない</span>
+          </li>
+          <li>
+            <span class="ba-icon">✗</span>
+            <span>月末に慌てて実績をかき集めるが、請求漏れ・サービスしすぎが発生</span>
+          </li>
+          <li>
+            <span class="ba-icon">✗</span>
+            <span>保守は「言われたことをこなすだけ」で、追加提案は属人的</span>
+          </li>
+          <li>
+            <span class="ba-icon">✗</span>
+            <span>依頼待ちなので売上の見通しが立たず、値上げ交渉の根拠も作れない</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="ba-arrow">
+        <span class="icon-arrow"></span>
+        <div class="ba-arrow-text">トコトン</div>
+      </div>
+
+      <div class="ba-card ba-after">
+        <div class="ba-title">
+          <span class="icon-check"></span>
+          After｜能動的な収益基盤
+        </div>
+        <ul class="ba-list">
+          <li>
+            <span class="ba-icon">✓</span>
+            <span>すべての依頼・タスク・承認・社内外の会話がクライアント単位で一元管理</span>
+          </li>
+          <li>
+            <span class="ba-icon">✓</span>
+            <span>Workload Dashboardでクライアント別・担当者別の工数がリアルタイムで可視化</span>
+          </li>
+          <li>
+            <span class="ba-icon">✓</span>
+            <span>年間ロードマップと提案メニューの定期送信により、「依頼待ち」から「先回り提案」へ</span>
+          </li>
+          <li>
+            <span class="ba-icon">✓</span>
+            <span>実績データをもとに「契約時間を超えています」と事実ベースで交渉</span>
+          </li>
+          <li>
+            <span class="ba-icon">✓</span>
+            <span>蓄積されたログをAIと連携し、提案案・要約・次月提案の下書きまで半自動化</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Quantitative Effects -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">SECTION 2</div>
+      <h2 class="section-title">定量的な効果とメリット</h2>
+      <p class="section-desc">「楽になる」だけでなく、数字として現れる収益インパクト</p>
+    </div>
+
+    <div class="metrics-intro">
+      <div class="metrics-intro-text">
+        💡 トコトンは「管理ツール」ではなく「収益向上ツール」です。以下の仕組みにより、具体的な経営インパクトを生み出します。
+      </div>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-header">
+          <div class="metric-icon">💰</div>
+          <div class="metric-title">請求漏れ（取りっぱぐれ）の回収</div>
+        </div>
+        <div class="metric-impact">隠れ作業を確実に収益化</div>
+        <div class="metric-description">
+          「30分=1ポイント」のポイント制により、これまで「サービス（無料）」になっていた細かい作業を正確に計上。月末の「思い出し請求」ではなく、リアルタイムで作業量を把握し、確実な収益化を実現します。
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <div class="metric-icon">⏱️</div>
+          <div class="metric-title">管理工数の大幅削減</div>
+        </div>
+        <div class="metric-impact">探す・確認する時間をゼロ化</div>
+        <div class="metric-description">
+          依頼チャネルの一元化により「あの依頼どこだっけ？」を探す時間や、社内・外注間の確認往復を削減。浮いた時間を新規制作や追加提案のリソースに回せます。
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <div class="metric-icon icon-trend"></div>
+          <div class="metric-title">提案機会の創出によるアップセル</div>
+        </div>
+        <div class="metric-impact">先回り提案で追加売上を獲得</div>
+        <div class="metric-description">
+          年間ロードマップの共有と提案メニューの定期送信により、担当者の力量に依存していた追加提案を「自動の運用」として仕組み化。機会損失を防ぎ、継続的なアップセルを実現します。
+        </div>
+      </div>
+
+      <div class="metric-card">
+        <div class="metric-header">
+          <div class="metric-icon">📊</div>
+          <div class="metric-title">価格交渉の根拠づくり</div>
+        </div>
+        <div class="metric-impact">事実ベースでの値上げ交渉</div>
+        <div class="metric-description">
+          Workload Dashboardで「契約40時間に対し実働65時間」など具体的なデータを提示。「お願い」ベースではなく「共有」ベースでの価格交渉により、適正な対価を確保できます。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Customer Types -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">SECTION 3</div>
+      <h2 class="section-title">顧客タイプ別｜なりたい姿・課題・サービス活用の対応表</h2>
+      <p class="section-desc">実際の商談フィードバックから導いた代表的な顧客像。「どのタイプか」を早期に見極めることが重要</p>
+    </div>
+
+    <div class="customer-types">
+      <!-- Type A -->
+      <div class="customer-type">
+        <div class="ct-header ct-type-a">
+          <div class="ct-icon icon-phone"></div>
+          <div class="ct-info">
+            <h3>タイプA｜依頼散在・属人化に悩む保守会社</h3>
+            <p>電話・メール・Slack・口頭と依頼チャネルがバラバラ。2〜3名で人力管理している状態</p>
+          </div>
+        </div>
+        <div class="ct-body">
+          <div class="ct-row">
+            <div class="ct-label">🎯 なりたい姿</div>
+            <div class="ct-content">
+              依頼を一箇所で管理し、誰がどれだけ作業しているかを「機械的に」把握できる状態。ポイント制で作業量を可視化し、収益を安定させたい。
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">❗ 引き出すべき課題</div>
+            <div class="ct-content">
+              <span class="tag tag-red">依頼の散在</span>
+              <span class="tag tag-red">属人化</span>
+              <span class="tag tag-red">請求漏れ</span>
+              <span class="tag tag-red">確認工数の肥大化</span>
+              <div class="quote-box">
+                実際の顧客発言：「電話で来る、メールで来る、営業伝達もあったり、来館時に言われたりとか、もうバラバラすぎて」
+              </div>
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">🔗 サービス紐づき</div>
+            <div class="ct-content">
+              <span class="tag tag-blue">依頼一元管理</span>
+              <span class="tag tag-blue">ポイント制・Workload Dashboard</span>
+              <span class="tag tag-blue">3社間コミュニケーション分離</span>
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">🏆 実現できること</div>
+            <div class="ct-content">
+              依頼の一元管理で探す工数ゼロ・請求漏れ防止。ポイント制で「隠れ作業」を可視化し、工数データを根拠に値上げ交渉が可能になる。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type B -->
+      <div class="customer-type">
+        <div class="ct-header ct-type-b">
+          <div class="ct-icon icon-user"></div>
+          <div class="ct-info">
+            <h3>タイプB｜担当者制・窓口一本化済みの制作会社</h3>
+            <p>保守は担当者が個別対応しており、窓口は整理済み。ただし新規制作でのタスク管理に課題</p>
+          </div>
+        </div>
+        <div class="ct-body">
+          <div class="ct-row">
+            <div class="ct-label">🎯 なりたい姿</div>
+            <div class="ct-content">
+              新規制作プロジェクトで顧客とのタスクのやり取りをスムーズにし、リマインド漏れ・確認往復を減らしたい。
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">❗ 引き出すべき課題</div>
+            <div class="ct-content">
+              <span class="tag tag-red">新規制作での顧客タスク漏れ</span>
+              <span class="tag tag-red">アナログなリマインド対応</span>
+              <div class="quote-box">
+                実際の顧客発言：「まさに弊社が今抱えている問題を解消しようとするな」
+              </div>
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">🔗 サービス紐づき</div>
+            <div class="ct-content">
+              <span class="tag tag-green">3社間コミュニケーション分離</span>
+              <span class="tag tag-green">依頼・承認ログの蓄積</span>
+              <span class="tag tag-green">クライアント専用窓口</span>
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">🏆 実現できること</div>
+            <div class="ct-content">
+              制作プロジェクトでの顧客タスク漏れを防止。外注先・クライアント・自社の3者間コミュニケーションを分離し、やり取りの透明性と効率を両立。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type C -->
+      <div class="customer-type">
+        <div class="ct-header ct-type-c">
+          <div class="ct-icon icon-robot"></div>
+          <div class="ct-info">
+            <h3>タイプC｜AI推進・DX化を進める会社</h3>
+            <p>親会社・経営層からAI活用を強く求められており、業務自動化に積極的</p>
+          </div>
+        </div>
+        <div class="ct-body">
+          <div class="ct-row">
+            <div class="ct-label">🎯 なりたい姿</div>
+            <div class="ct-content">
+              依頼受付からAIによる概要整理・ソース生成・デプロイまでを自動化し、人的工数を最小化した運用体制を作りたい。
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">❗ 引き出すべき課題</div>
+            <div class="ct-content">
+              <span class="tag tag-red">AI活用のためのデータが散在・未整備</span>
+              <span class="tag tag-red">依頼ログが蓄積されていない</span>
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">🔗 サービス紐づき</div>
+            <div class="ct-content">
+              <span class="tag tag-blue">MCP Server対応</span>
+              <span class="tag tag-blue">AIエージェント連携</span>
+              <span class="tag tag-blue">依頼・承認・進行ログの蓄積</span>
+            </div>
+          </div>
+          <div class="ct-row">
+            <div class="ct-label">🏆 実現できること</div>
+            <div class="ct-content">
+              クライアント単位で蓄積されたログ資産がAIエージェントの入力データになる。「散在データではAIは機能しない」を逆手に、AI活用の前提基盤として位置づけ。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Hearing Points -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">SECTION 4</div>
+      <h2 class="section-title">課題の引き出し方｜ヒアリングのポイント</h2>
+      <p class="section-desc">商談フィードバックの実例をもとに構成。「どのタイプか」を見極める質問から始め、課題を深掘りする</p>
+    </div>
+
+    <div class="hearing-grid">
+      <div class="hearing-card">
+        <div class="hearing-header hh-primary">
+          🔍 タイプ判定ヒアリング（冒頭必須）
+        </div>
+        <div class="hearing-body">
+          <div class="question-item">
+            <div class="question">「お客様からの依頼は、今どこから来ることが多いですか？」</div>
+            <div class="question-note">→ 電話・メール・Slack等が複数出れば「散在型（タイプA）」確定</div>
+          </div>
+          <div class="question-item">
+            <div class="question">「依頼の窓口は整理されていますか？担当者制ですか？」</div>
+            <div class="question-note">→ 「一本化済み」「担当者制」なら新規制作課題（タイプB）へ展開</div>
+          </div>
+          <div class="question-item">
+            <div class="question">「今、AIや自動化の取り組みは進めていますか？」</div>
+            <div class="question-note">→ 「AI推進中」ならMCP連携（タイプC）訴求へ</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hearing-card">
+        <div class="hearing-header hh-accent">
+          📊 課題深掘りヒアリング（タイプA向け）
+        </div>
+        <div class="hearing-body">
+          <div class="question-item">
+            <div class="question">「月に何件くらいの更新依頼がありますか？」</div>
+            <div class="question-note">→ 件数が多いほど「散在の痛み」が大きい。月30件以上で強く刺さる</div>
+          </div>
+          <div class="question-item">
+            <div class="question">「依頼の対応漏れや請求漏れが起きたことはありますか？」</div>
+            <div class="question-note">→ 「ある」なら即座にポイント制・Workload Dashboardを提示</div>
+          </div>
+          <div class="question-item">
+            <div class="question">「外注先も含めた3者間のやり取りはどう管理していますか？」</div>
+            <div class="question-note">→ 「混在している」なら3社間コミュニケーション分離機能を紹介</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hearing-card">
+        <div class="hearing-header hh-warn">
+          💰 収益・提案課題の引き出し（既存管理ツール利用顧客向け）
+        </div>
+        <div class="hearing-body">
+          <div class="question-item">
+            <div class="question">「保守の年間売上は計画的に伸ばせていますか？」</div>
+            <div class="question-note">→ 「なかなか…」なら年間ロードマップ・提案仕組み化を訴求</div>
+          </div>
+          <div class="question-item">
+            <div class="question">「工数が超過したとき、値上げ交渉はできていますか？」</div>
+            <div class="question-note">→ 「なかなか言いにくい」なら工数可視化→事実ベース交渉を提示</div>
+          </div>
+          <div class="question-item">
+            <div class="question">「2ヶ月後、どんな状態になっていれば続けたいと思いますか？」</div>
+            <div class="question-note">→ 必ず聞く。成功基準を合意することでトライアルの意味が生まれる</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Segments -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">SECTION 5</div>
+      <h2 class="section-title">価値提供セグメント別の訴求ポイント</h2>
+      <p class="section-desc">相手の役職・立場に合わせて、伝えるべき「価値」を切り替える</p>
+    </div>
+
+    <div class="segment-grid">
+      <div class="segment-card">
+        <div class="segment-role">経営層（経営価値）</div>
+        <div class="segment-content">
+          <strong>「その効果が何を会社にもたらすのか」</strong>
+          単なる管理ツールではなく、請求漏れの防止や提案機会の増加による「収益向上」、AI時代に向けた「ログ資産の蓄積」を訴求します。稟議には「楽になる」ではなく「収益が増える」証拠が必要。
+        </div>
+      </div>
+
+      <div class="segment-card">
+        <div class="segment-role">事業部長（事業価値）</div>
+        <div class="segment-content">
+          <strong>「問題解決した結果どのような効果があるか」</strong>
+          作業量の可視化による「チーム内の負荷平準化」、属人化の解消による「業務の標準化」、顧客の解約リスク低下を訴求します。提案機会の増加が追加売上につながることを具体的に示す。
+        </div>
+      </div>
+
+      <div class="segment-card">
+        <div class="segment-role">マネージャー（管理価値）</div>
+        <div class="segment-content">
+          <strong>「どういうシーンの問題を解決するのか」</strong>
+          「誰が重いタスクを持っているか分からない」課題にWorkload Dashboardを提示。依頼の一元化で「探す・確認する」工数を削減し、チーム全体の負荷を下げる。
+        </div>
+      </div>
+
+      <div class="segment-card">
+        <div class="segment-role">担当者（現場価値）</div>
+        <div class="segment-content">
+          <strong>「どういう機能があったら便利なのか」</strong>
+          ポイント制で「30分=1ポイント」と作業量を機械的に管理。クライアント専用メール発行→自動起票でログイン手間を最小化。スレッド分離でクライアントに見せない社内・外注とのやり取りが可能。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: FAQ -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">SECTION 6</div>
+      <h2 class="section-title">よくある懸念への対応</h2>
+      <p class="section-desc">商談フィードバックで実際に出た懸念・反対意見と、その切り返しの視点</p>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <div class="faq-q-icon">Q</div>
+        <div>「有料ツールの稟議を通すのが大変。楽になるだけだと予算が出しにくい。」</div>
+      </div>
+      <div class="faq-answer">
+        <div class="answer-label">💡 切り返しの視点</div>
+        おっしゃる通り、導入コストの正当化は重要です。トコトンは『楽になる』だけでなく、<strong>取りっぱぐれの防止・工数超過の早期把握・値上げ交渉の根拠化</strong>によって直接的な収益インパクトが生まれます。稟議には『収益向上効果』の数字が必要ですので、一緒にシミュレーションを作りましょう。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <div class="faq-q-icon">Q</div>
+        <div>「既にBacklog等のタスク管理ツールを使っているので不要では？」</div>
+      </div>
+      <div class="faq-answer">
+        <div class="answer-label">💡 切り返しの視点</div>
+        「大規模開発はBacklog、中規模・保守運用はトコトン」という使い分け（共存）をご提案します。トコトンは単なるタスク管理ではなく、<strong>年間計画の共有や提案の自動化など「保守の売上を伸ばす」</strong>ことに特化している点をお伝えください。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <div class="faq-q-icon">Q</div>
+        <div>「ツールにログインするのが面倒。クライアントが使いこなせるか不安。」</div>
+      </div>
+      <div class="faq-answer">
+        <div class="answer-label">💡 切り返しの視点</div>
+        クライアントにログインしてもらわなくても大丈夫です。<strong>クライアント専用のメールアドレスを発行し、そこにメールを送るだけで自動的に依頼が起票される</strong>機能があります。クライアント側の操作変更はゼロ、慣れたメールのまま使えます。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <div class="faq-q-icon">Q</div>
+        <div>「ポイントを見せると解約リスクが高まるのでは？」</div>
+      </div>
+      <div class="faq-answer">
+        <div class="answer-label">💡 切り返しの視点</div>
+        ご懸念はよく分かります。実はポイント制には<strong>非表示設定</strong>もあり、クライアントに見せるかどうかは会社側がコントロールできます。むしろ「見えないまま超過している状態」の方が、後から請求トラブルになるリスクが高いと言えます。
+      </div>
+    </div>
+  </section>
+</div>
+
+</body>
+</html>
